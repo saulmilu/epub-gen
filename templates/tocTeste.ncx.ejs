@@ -47,13 +47,16 @@
                         <% var i = 0 %>
                         <% if(orderNcx.id){ %>
                             <% while(i < orderNcx.length){ %>
-                                <% recursiva(content,orderNcx.desc[i], (index+1)) %>
+                                <% recursiva(cont,orderNcx.desc[i], (index+1)) %>
                                 <% i = i+1 %>
                             <% } %>
                         <% } %>
                     </navPoint>
                 
             <% } %>
-        <% }(content,content.orderNcx,0) %>
+        <% } %>
+        <% content.forEach(function(conte00,index){
+                <% recursiva(conte00, cont00.orderNcx, index); %>
+        <% }) %>
     </navMap>
 </ncx>
