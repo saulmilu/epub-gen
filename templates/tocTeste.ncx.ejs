@@ -46,10 +46,9 @@
                     <content src="<%= auxHref %>"/>
                     <% var i = 0 %>
                     <% while(i<orderNcx.length){ %>
-                        <% (content,orderNcx.desc[i]) %>
+                        <% recursiva(content,orderNcx.desc[i]) %>
                         <% i++ %>
                     <% } %>
-                        <% recursiva(content,index++) %>
                 </navPoint>
             <% } %>
         <% }(content,content.orderNcx) %>
