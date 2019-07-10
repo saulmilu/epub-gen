@@ -45,7 +45,7 @@
                         <%var auxHref = cont.href + "#" +orderNcx.id %> 
                         <content src="<%= auxHref %>"/>
                         <% var i = 0 %>
-                        <% while(i<orderNcx.length){ %>
+                        <% while(i < orderNcx.length){ %>
                             <% recursiva(content,orderNcx.desc[i]) %>
                             <% i++ %>
                         <% } %>
