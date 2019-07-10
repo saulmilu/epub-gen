@@ -37,19 +37,20 @@
 
         <% function recursiva(cont, orderNcx){ %>
             <% if(!cont.excludeFromToc && !cont.beforeToc){ %>
-                <% if(orderNcx.id) %>
-                <navPoint id="cont_<%= index %>_<%= cont.id %>" playOrder="<%= _index++ %>" class="chapter">
-                    <navLabel>
-                        <text><%= (1+index) + ". " + (content.title || "Chapter " + (1+index))%></text>
-                    </navLabel>
-                    <%var auxHref = cont.href + "#" +orderNcx.id %> 
-                    <content src="<%= auxHref %>"/>
-                    <% var i = 0 %>
-                    <% while(i<orderNcx.length){ %>
-                        <% recursiva(content,orderNcx.desc[i]) %>
-                        <% i++ %>
-                    <% } %>
-                </navPoint>
+                <% if(orderNcx.id){ %>
+                    <navPoint id="cont_<%= index %>_<%= cont.id %>" playOrder="<%= _index++ %>" class="chapter">
+                        <navLabel>
+                            <text><%= (1+index) + ". " + (content.title || "Chapter " + (1+index))%></text>
+                        </navLabel>
+                        <%var auxHref = cont.href + "#" +orderNcx.id %> 
+                        <content src="<%= auxHref %>"/>
+                        <% var i = 0 %>
+                        <% while(i<orderNcx.length){ %>
+                            <% recursiva(content,orderNcx.desc[i]) %>
+                            <% i++ %>
+                        <% } %>
+                    </navPoint>
+                <% } %>
             <% } %>
         <% }(content,content.orderNcx) %>
     </navMap>
