@@ -35,7 +35,7 @@
 
 
 
-        <% function recursiva(cont, orderNcx){ %>
+        <% function recursiva(cont, orderNcx,index){ %>
             <% if(!cont.excludeFromToc && !cont.beforeToc){ %>
                 <% if(orderNcx.id){ %>
                     <navPoint id="cont_<%= index %>_<%= cont.id %>" playOrder="<%= _index++ %>" class="chapter">
@@ -46,12 +46,12 @@
                         <content src="<%= auxHref %>"/>
                         <% var i = 0 %>
                         <% while(i < orderNcx.length){ %>
-                            <% recursiva(content,orderNcx.desc[i]) %>
-                            <% i++ %>
+                            <% recursiva(content,orderNcx.desc[i], (index+1)) %>
+                            <% i = i+1 %>
                         <% } %>
                     </navPoint>
                 <% } %>
             <% } %>
-        <% }(content,content.orderNcx) %>
+        <% }(content,content.orderNcx,0) %>
     </navMap>
 </ncx>
