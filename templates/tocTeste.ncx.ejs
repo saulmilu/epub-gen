@@ -42,7 +42,7 @@
                         <navLabel>
                             <text><%= (1+index) + ". " + (content.title || "Chapter " + (1+index))%></text>
                         </navLabel>
-                        <%var auxHref = cont.href + "#" +orderNcx.id %> 
+                        <% var auxHref = cont.href + "#" +orderNcx.id %> 
                         <content src="<%= auxHref %>"/>
                         <% var i = 0 %>
                         <% if(orderNcx.id){ %>
@@ -55,7 +55,7 @@
                 
             <% } %>
         <% } %>
-        <% content.forEach(function(conte00,index){
+        <% content.forEach(function(conte00,index){ %>
                 <% recursiva(conte00, cont00.orderNcx, index); %>
         <% }) %>
     </navMap>
