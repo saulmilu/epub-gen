@@ -15,7 +15,7 @@
             <p class="table-of-content">
                 <% var auxHref = cont.href + "#" +orderNcx.id %> 
                 <a href="<%= auxHref %>" > <%= indexTotal + ". " + (content.title || "Chapter "+ indexTotal ) %>
-                    <% if(content.author.length){ %>
+                    <% if(cont.author.length){ %>
                     - <small class="toc-author"><%= content.author.join(",") %></small>
                     <% } %>
                     <% if(cont.url){ %><span class="toc-link"><%= cont.url %></span><% }else{ %><span class="toc-link"></span><% } %>
