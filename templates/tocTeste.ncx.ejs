@@ -35,28 +35,28 @@
 
 
 
-        <% function recursiva(cont, orderNcx,index){ %>
+        <% function recursiva(cont, orderNcx,index, indexPai){ %>
             <% if(!cont.excludeFromToc && !cont.beforeToc){ %>
-                
-                    <navPoint id="cont_<%= index %>_<%= cont.id %>" playOrder="<%= _index++ %>" class="chapter">
+                <% if(orderNcx.id){ %>
+                    <% var indexTotal =  (indexPai) ? indexPai + "." + index : index %>
+                    <navPoint id="cont_<%= indexTotal %>_<%= cont.id %>" playOrder="<%= _index++ %>" class="chapter">
                         <navLabel>
-                            <text><%= (1+index) + ". " + (content.title || "Chapter " + (1+index))%></text>
+                            <text><%= indexTotal + ". " + (content.title || "Chapter " + indexTotal) %></text>
                         </navLabel>
                         <% var auxHref = cont.href + "#" +orderNcx.id %> 
                         <content src="<%= auxHref %>"/>
                         <% var i = 0 %>
-                        <% if(orderNcx.id){ %>
                             <% while(i < orderNcx.length){ %>
-                                <% recursiva(cont,orderNcx.desc[i], (index+1)) %>
+                                <% recursiva(cont,orderNcx.desc[i], (i+1), (indexPai ? indexPai : indexTotal) ) %>
                                 <% i = i+1 %>
                             <% } %>
-                        <% } %>
+                        
                     </navPoint>
-                
+                <% } %>
             <% } %>
         <% } %>
-        <% content.forEach(function(conte00,index){ %>
-                <% recursiva(conte00, conte00.orderNcx, index); %>
+        <% content.forEach(function(page,index){ %>
+                <% recursiva(page, page.orderNcx, index+1, null); %>
         <% }) %>
     </navMap>
 </ncx>

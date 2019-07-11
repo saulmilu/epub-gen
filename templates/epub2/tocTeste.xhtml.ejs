@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xml:lang="<%- lang %>" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title><%= title %></title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+<body>
+<h1 class="h1"><%= tocTitle %></h1>
+<% function recursiva(cont, orderNcx, index, indexPai){ 
+    <% if(!cont.excludeFromToc){ %>
+        <% if(orderNcx.id){ %>
+            <% var indexTotal  = indexPai ? indexPai + "." + index : index %>
+            <p class="table-of-content">
+                <% var auxHref = cont.href + "#" +orderNcx.id %> 
+                <a href="<%= auxref %>" > <%= indexTotal + ". " + (content.title || "Chapter "+ indexTotal ) %>
+                    <% if(content.author.length){ %>
+                    - <small class="toc-author"><%= content.author.join(",") %></small>
+                    <% } %>
+                    <% if(cont.url){ %><span class="toc-link"><%= cont.url %></span><% }else{ %><span class="toc-link"></span><% } %>
+                </a>
+                <% var i = 0 %>
+                <% while(i < orderNcx.length) {%>
+                    <% recursiva(cont, orderNcx.desc[i], (i+1), (indexPai ? indexPai : indexTotal )) %>
+                    <% i++ %>
+                <% } %>
+            </p>
+        <% } %>
+    <% } %>
+<% } %>
+<% content.forEach(function(page,index){ %>
+    <% recursiva(page, page.orderNcx, index+1, null); %>
+<% }) %>
+</body>
+</html>
