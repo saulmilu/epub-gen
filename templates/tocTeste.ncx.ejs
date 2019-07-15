@@ -47,7 +47,7 @@
                         <content src="<%= auxHref %>"/>
                         <% var i = 0 %>
                             <% while(i < orderNcx.length){ %>
-                                <% recursiva(cont,orderNcx.desc[i], (i+1), (indexPai ? indexPai : indexTotal) ) %>
+                                <% recursiva(cont,orderNcx.desc[i], (i+1), indexTotal) %>
                                 <% i = i+1 %>
                             <% } %>
                         
