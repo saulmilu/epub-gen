@@ -14,9 +14,9 @@
             <% var indexTotal  = indexPai ? indexPai + "." + index : index %>
             <p class="table-of-content">
                 <% var auxHref = cont.href + "#" +orderNcx.id %> 
-                <a href="<%= auxHref %>" > <%= indexTotal + ". " + (content.title || "Chapter "+ indexTotal ) %>
+                <a href="<%= auxHref %>" > <%= indexTotal + ". " + (cont.title || "Chapter "+ indexTotal ) %>
                     <% if(cont.author.length){ %>
-                    - <small class="toc-author"><%= content.author.join(",") %></small>
+                    - <small class="toc-author"><%= cont.author.join(",") %></small>
                     <% } %>
                     <% if(cont.url){ %><span class="toc-link"><%= cont.url %></span><% }else{ %><span class="toc-link"></span><% } %>
                 </a>

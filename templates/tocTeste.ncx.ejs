@@ -41,7 +41,7 @@
                     <% var indexTotal =  (indexPai) ? indexPai + "." + index : index %>
                     <navPoint id="cont_<%= indexTotal %>_<%= cont.id %>" playOrder="<%= _index++ %>" class="chapter">
                         <navLabel>
-                            <text><%= indexTotal + ". " + (content.title || "Chapter " + indexTotal) %></text>
+                            <text><%= indexTotal + ". " + (cont.title || "Chapter " + indexTotal) %></text>
                         </navLabel>
                         <% var auxHref = cont.href + "#" +orderNcx.id %> 
                         <content src="<%= auxHref %>"/>
