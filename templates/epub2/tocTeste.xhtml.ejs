@@ -11,10 +11,10 @@
 <% function recursiva(cont, orderNcx, index, indexPai){ %>
     <% if(!cont.excludeFromToc){ %>
         <% if(orderNcx.id){ %>
-            <% var indexTotal  = index %>
+            <% var indexTotal  = (indexPai ? (indexPai+index) : index) %>
             <p class="table-of-content">
                 <% var auxHref = cont.href + "#" +orderNcx.id %> 
-                <a href="<%= auxHref %>" > <%= indexTotal + (cont.title || "Chapter "+ indexTotal ) %>
+                <a href="<%= auxHref %>" > <%= indexTotal + (cont.title || "Chapter " ) %>
                     <% if(cont.author.length){ %>
                     - <small class="toc-author"><%= cont.author.join(",") %></small>
                     <% } %>
@@ -22,7 +22,7 @@
                 </a>
                 <% var i = 0 %>
                 <% while(i < orderNcx.length) {%>
-                    <% recursiva(cont, orderNcx.desc[i], "/t" , null) %>
+                    <% recursiva(cont, orderNcx.desc[i], "\t" , (indexPai ? indexTotal : "\t") ) %>
                     <% i++ %>
                 <% } %>
             </p>
