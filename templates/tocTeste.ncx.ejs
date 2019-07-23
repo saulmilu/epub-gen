@@ -38,16 +38,16 @@
         <% function recursiva(cont, orderNcx,index, indexPai){ %>
             <% if(!cont.excludeFromToc && !cont.beforeToc){ %>
                 <% if(orderNcx.id){ %>
-                    <% var indexTotal =  (indexPai) ? indexPai + "." + index : index %>
+                    <% var indexTotal =  (index) %>
                     <navPoint id="cont_<%= indexTotal %>_<%= cont.id %>" playOrder="<%= _index++ %>" class="chapter">
                         <navLabel>
-                            <text><%= indexTotal + ". " + (cont.title || "Chapter " + indexTotal) %></text>
+                            <text><%= (indexTotal ? indexTotal+". ": "") + (cont.title || "Chapter " + indexTotal) %></text>
                         </navLabel>
                         <% var auxHref = cont.href + "#" +orderNcx.id %> 
                         <content src="<%= auxHref %>"/>
                         <% var i = 0 %>
                             <% while(i < orderNcx.length){ %>
-                                <% recursiva(cont,orderNcx.desc[i], (i+1), indexTotal) %>
+                                <% recursiva(cont,orderNcx.desc[i], null, null) %>
                                 <% i = i+1 %>
                             <% } %>
                         
