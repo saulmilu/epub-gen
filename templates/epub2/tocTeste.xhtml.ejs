@@ -14,7 +14,7 @@
             <% var indexTotal  = (indexPai ? (indexPai+index) : index) %>
             <p class="table-of-content">
                 <% var auxHref = cont.href + "#" +orderNcx.id %> 
-                <a href="<%= auxHref %>" > <%= indexTotal + (cont.title || "Chapter " ) %>
+                <a href="<%= auxHref %>" > <%= indexTotal + (orderNcx.subTitle || "Chapter " ) %>
                     <% if(cont.author.length){ %>
                     - <small class="toc-author"><%= cont.author.join(",") %></small>
                     <% } %>
