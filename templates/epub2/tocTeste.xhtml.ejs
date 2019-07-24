@@ -12,7 +12,7 @@
     <% if(!cont.excludeFromToc){ %>
         <% if(orderNcx.id){ %>
             <% var indexTotal  = (index ? (index) : "") %>
-                <li>
+            <li>
                 <% var auxHref = cont.href + "#" +orderNcx.id %> 
                 
                 <a href="<%= auxHref %>" > <%= indexTotal + (orderNcx.subTitle || "Chapter " ) %>
@@ -28,17 +28,17 @@
                     <% i++ %>
                     </ul>
                 <% } %>
-                </li>
-                          
+            </li>
+                        
         <% } %>
     <% } %>
 <% } %>
-<% <ol> %>
+<ol>
 <% content.forEach(function(page,index){ %>
-    <% <li> %>
+    
     <% recursiva(page, page.orderNcx,(index+1)+". ", null); %>
-    <% </li> %>
+    
 <% }) %>
-<% </ol> %>
+</ol>
 </body>
 </html>
