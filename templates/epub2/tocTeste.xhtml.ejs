@@ -12,8 +12,12 @@
     <% if(!cont.excludeFromToc){ %>
         <% if(orderNcx.id){ %>
             <% var indexTotal  = (index ? (index) : "") %>
-            <p class="table-of-content<%=level%>">
+            <% if(orderNcx.length > 0){%>
+            <ul class="table-of-content<%=level%>">
+            <% }%>
+                <li>
                 <% var auxHref = cont.href + "#" +orderNcx.id %> 
+                
                 <a href="<%= auxHref %>" > <%= indexTotal + (orderNcx.subTitle || "Chapter " ) %>
                     <% if(cont.author.length){ %>
                     - <small class="toc-author"><%= cont.author.join(",") %></small>
@@ -25,7 +29,12 @@
                     <% recursiva(cont, orderNcx.desc[i],level+1, null , null ) %>
                     <% i++ %>
                 <% } %>
-            </p>
+                </li>
+            <% if(orderNcx.length > 0){%>
+            </ul>
+            <% }%>
+                
+                
         <% } %>
     <% } %>
 <% } %>
