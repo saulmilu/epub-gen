@@ -12,7 +12,7 @@
     <% if(!cont.excludeFromToc){ %>
         <% if(orderNcx.id){ %>
             <% var indexTotal  = (index ? (index) : "") %>
-            <p class="table-of-content<%=level">
+            <p class="table-of-content<%=level%>">
                 <% var auxHref = cont.href + "#" +orderNcx.id %> 
                 <a href="<%= auxHref %>" > <%= indexTotal + (orderNcx.subTitle || "Chapter " ) %>
                     <% if(cont.author.length){ %>
