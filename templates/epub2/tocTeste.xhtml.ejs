@@ -8,11 +8,11 @@
 </head>
 <body>
 <h1 class="h1"><%= tocTitle %></h1>
-<% function recursiva(cont, orderNcx,index, indexPai){ %>
+<% function recursiva(cont, orderNcx,index,typeList){ %>
     <% if(!cont.excludeFromToc){ %>
         <% if(orderNcx.id){ %>
             <% var indexTotal  = (index ? (index) : "") %>
-            <li>
+            <li class="table-of-content<%=typeList %>">
                 <% var auxHref = cont.href + "#" +orderNcx.id %> 
                 
                 <a href="<%= auxHref %>" > <%= indexTotal + (orderNcx.subTitle || "Chapter " ) %>
@@ -23,8 +23,8 @@
                 </a>
                 <% var i = 0 %>
                 <% while(i < orderNcx.length) {%>
-                    <ul class="table-of-content" >
-                    <% recursiva(cont, orderNcx.desc[i], null , null ) %>
+                    <ul>
+                    <% recursiva(cont, orderNcx.desc[i], null , "ul" ) %>
                     <% i++ %>
                     </ul>
                 <% } %>
@@ -36,7 +36,7 @@
 <ol>
 <% content.forEach(function(page,index){ %>
     
-    <% recursiva(page, page.orderNcx,(index+1)+". ", null); %>
+    <% recursiva(page, page.orderNcx,(index+1)+". ", "ol"); %>
     
 <% }) %>
 </ol>
