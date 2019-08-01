@@ -36,7 +36,7 @@
 <ol>
 <% content.forEach(function(page,index){ %>
     
-    <% recursiva(page, page.orderNcx,(index+1)+". ", "ol"); %>
+    <% recursiva(page, page.orderNcx, null, "ol"); %>
     
 <% }) %>
 </ol>
