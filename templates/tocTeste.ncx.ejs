@@ -40,6 +40,13 @@
                             <% } %>
                         
                     </navPoint>
+                <% } else if(cont.title === 'Referẽncias Bibliográficas'){%>
+                    <navPoint id="<%= cont.href + '#ref' %>" playOrder="<%= _index++ %>" class="chapter" >
+                        <navLabel>
+                            <text>Referẽncias Bibliográficas</text>
+                        </navLabel>
+                        <content src="<%= cont.href + '#ref' %>"/>
+                    </navPoint>
                 <% } %>
             <% } %>
         <% } %>

@@ -30,6 +30,15 @@
                 <% } %>
             </li>
                         
+        <% } else if(cont.title === 'Referẽncias Bibliográficas'){%>
+            <li class="table-of-content<%=typeList %>">
+                <a href="<%= cont.href + '#ref' %>">Referẽncias Bibliográficas
+                    <% if(cont.author.length){ %>
+                    - <small class="toc-author"><%= cont.author.join(",") %></small>
+                    <% } %>
+                    <% if(cont.url){ %><span class="toc-link"><%= cont.url %></span><% }else{ %><span class="toc-link"></span><% } %>
+                </a>
+            </li>
         <% } %>
     <% } %>
 <% } %>
