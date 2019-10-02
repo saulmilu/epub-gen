@@ -29,7 +29,7 @@
                     <% var indexTotal =  (index) %>
                     <navPoint id="cont_<%= indexTotal %>_<%= cont.id %>" playOrder="<%= _index++ %>" class="chapter">
                         <navLabel>
-                            <text><%= (indexTotal ? indexTotal+". ": "") + (orderNcx.subTitle.replace(/\b\d+\./,"") || "Chapter " + indexTotal) %></text>
+                            <text><%= (indexTotal ? indexTotal+". ": "") + (orderNcx.subTitle.replace(/\b\d+\.\d*/,"") || "Chapter " + indexTotal) %></text>
                         </navLabel>
                         <% var auxHref = cont.href + "#" +orderNcx.id %> 
                         <content src="<%= auxHref %>"/>

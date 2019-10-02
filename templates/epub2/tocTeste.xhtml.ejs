@@ -15,7 +15,7 @@
             <li class="table-of-content<%=typeList %>">
                 <% var auxHref = cont.href + "#" +orderNcx.id %> 
                 
-                <a href="<%= auxHref %>" > <%= indexTotal + (orderNcx.subTitle.replace(/\b\d+\./,"") || "Chapter " ) %>
+                <a href="<%= auxHref %>" > <%= indexTotal + (orderNcx.subTitle.replace(/\b\d+\.\d*/,"") || "Chapter " ) %>
                     <% if(cont.author.length){ %>
                     - <small class="toc-author"><%= cont.author.join(",") %></small>
                     <% } %>
