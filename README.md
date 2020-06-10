@@ -79,12 +79,14 @@ Then put this in your code:
     - `data`:
         required, HTML String of the chapter content. image paths should be absolute path (should start with "http" or "https"), so that they could be downloaded. With the upgrade is possible to use local images (for this the path 	must start with file: //)
     - `excludeFromToc`:
-        optional, if is not shown on Table of content, default: false;
+        optional, if is not shown on Table of content, default: false. If true, this content is not include in spine of epub
     - `beforeToc`:
         optional, if is shown before Table of content, such like copyright pages. default: false;
     - `filename`:
         optional, specify filename for each chapter, default: undefined;
-- `verbose`:
+    - `orderNcx`:
+    	optional, specify nested title (subTitles). 
+ - `verbose`:
     specify whether or not to console.log progress messages, default: false.
 
 #### Output
