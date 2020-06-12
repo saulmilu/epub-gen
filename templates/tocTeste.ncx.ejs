@@ -15,7 +15,8 @@
     </docAuthor>
     <navMap>
         <% var _index = 0; %>
-        
+        <% var countPretextElement = 0; %>
+
         <navPoint id="toc" playOrder="<%= _index++ %>" class="chapter">
             <navLabel>
                 <text><%= tocTitle %></text>
@@ -24,9 +25,10 @@
         </navPoint>
 
         <% function recursiva(cont, orderNcx,index, indexPai){ %>
+            <% if (cont.beforeToc){ countPretextElement++ } %>
             <% if(!cont.excludeFromToc && !cont.beforeToc){ %>
-                <% if(orderNcx.id){ %>
-                    <% var indexTotal =  (index) %>
+                <% if(orderNcx && orderNcx.id){ %>
+                    <% var indexTotal =  (index ? (index - countPretextElement) : "" ) %>
                     <navPoint id="cont_<%= indexTotal %>_<%= cont.id %>" playOrder="<%= _index++ %>" class="chapter">
                         <navLabel>
                             <text><%= (indexTotal ? indexTotal+". ": "") + (orderNcx.subTitle.replace(/\b\d+\.\d*/,"") || "Chapter " + indexTotal) %></text>

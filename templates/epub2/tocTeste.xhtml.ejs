@@ -9,8 +9,8 @@
 <body>
 <h1 class="h1"><%= tocTitle %></h1>
 <% function recursiva(cont, orderNcx,index,typeList){ %>
-    <% if(!cont.excludeFromToc){ %>
-        <% if(orderNcx.id){ %>
+    <% if(!cont.excludeFromToc && !cont.beforeToc){ %>
+        <% if( orderNcx && orderNcx.id){ %>
             <% var indexTotal  = (index ? (index) : "") %>
             <li class="table-of-content<%=typeList %>">
                 <% var auxHref = cont.href + "#" +orderNcx.id %> 
