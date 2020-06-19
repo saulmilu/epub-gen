@@ -17,6 +17,17 @@
         <% var _index = 0; %>
         <% var countPretextElement = 0; %>
 
+        <% content.forEach(function(content, index){ %>
+            <% if(!content.excludeFromToc && content.beforeToc){ %>
+                <navPoint id="content_<%= index %>_<%= content.id %>" playOrder="<%= _index++ %>" class="chapter">
+                    <navLabel>
+                        <text><%= (content.type || "Chapter " + index) %></text>
+                    </navLabel>
+                    <content src="<%= content.href %>"/>
+                </navPoint>
+            <% } %>
+        <% }) %>
+
         <navPoint id="toc" playOrder="<%= _index++ %>" class="chapter">
             <navLabel>
                 <text><%= tocTitle %></text>
