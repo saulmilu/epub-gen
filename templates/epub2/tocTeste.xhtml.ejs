@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xml:lang="<%- lang %>" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title><%= title %></title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+<body>
+<h1 class="h1"><%= tocTitle %></h1>
+<% function recursiva(cont, orderNcx,index,typeList){ %>
+    <% if(!cont.excludeFromToc && !cont.beforeToc){ %>
+        <% if( orderNcx && orderNcx.id){ %>
+            <% var indexTotal  = (index ? (index) : "") %>
+            <li class="table-of-content<%=typeList %>">
+                <% var auxHref = cont.href + "#" +orderNcx.id %> 
+                
+                <a href="<%= auxHref %>" > <%= indexTotal + (orderNcx.subTitle.replace(/\b\d+\.\d*/,"") || "Chapter " ) %>
+                    <% if(cont.author.length){ %>
+                    - <small class="toc-author"><%= cont.author.join(",") %></small>
+                    <% } %>
+                    <% if(cont.url){ %><span class="toc-link"><%= cont.url %></span><% }else{ %><span class="toc-link"></span><% } %>
+                </a>
+                <% var i = 0 %>
+                <% while(i < orderNcx.length) {%>
+                    <ul>
+                    <% recursiva(cont, orderNcx.desc[i], null , "ul" ) %>
+                    <% i++ %>
+                    </ul>
+                <% } %>
+            </li>
+                        
+        <% } else if(cont.title === 'Referências Bibliográficas'){%>
+            <li class="table-of-content<%=typeList %>">
+                <a href="<%= cont.href + '#ref' %>">Referências Bibliográficas
+                    <% if(cont.author.length){ %>
+                    - <small class="toc-author"><%= cont.author.join(",") %></small>
+                    <% } %>
+                    <% if(cont.url){ %><span class="toc-link"><%= cont.url %></span><% }else{ %><span class="toc-link"></span><% } %>
+                </a>
+            </li>
+        <% } %>
+    <% } %>
+<% } %>
+<ol>
+<% content.forEach(function(page,index){ %>
+    
+    <% recursiva(page, page.orderNcx, null, "ol"); %>
+    
+<% }) %>
+</ol>
+</body>
+</html>
